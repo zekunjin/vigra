@@ -9,8 +9,9 @@
     "preview:vite": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.8",
-    "vigra": "workspace:~"
+    "nanoid": "^5.0.4",
+    "vigra": "workspace:~",
+    "vue": "^3.3.8"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.0",

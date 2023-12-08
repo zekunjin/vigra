@@ -30,6 +30,7 @@
     "@antv/g": "^5.18.22",
     "@antv/g-canvas": "^1.11.24",
     "@vueuse/core": "^10.7.0",
+    "interactjs": "^1.10.26",
     "vue": "^3.3.10"
   },
   "devDependencies": {
@@ -39,6 +40,7 @@
     "@vue/tsconfig": "^0.4.0",
     "@vueuse/core": "^10.7.0",
     "eslint": "^8.55.0",
+    "interactjs": "^1.10.26",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "unplugin-vue-jsx": "^0.2.2",

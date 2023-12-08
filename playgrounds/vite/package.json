@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "dev:vite": "vite",
+    "build:vite": "vue-tsc && vite build",
+    "preview:vite": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.8"
+    "vue": "^3.3.8",
+    "vigra": "workspace:~"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.0",

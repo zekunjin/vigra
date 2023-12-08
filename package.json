@@ -2,7 +2,7 @@
   "name": "vigra",
   "version": "0.0.0",
   "description": "Antv/g based process graph component for vue.",
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -26,6 +26,12 @@
     "url": "https://github.com/zekunjin/vigra/issues"
   },
   "homepage": "https://github.com/zekunjin/vigra#readme",
+  "peerDependencies": {
+    "@antv/g": "^5.18.22",
+    "@antv/g-canvas": "^1.11.24",
+    "@vueuse/core": "^10.7.0",
+    "vue": "^3.3.10"
+  },
   "devDependencies": {
     "@antv/g": "^5.18.22",
     "@antv/g-canvas": "^1.11.24",

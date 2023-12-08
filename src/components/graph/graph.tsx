@@ -16,7 +16,7 @@ export const Graph = defineComponent({
     const { domRef } = useGraph(props)
 
     return () => (
-      <props.as ref={domRef}></props.as>
+      <props.as ref={domRef} />
     )
   }
 })

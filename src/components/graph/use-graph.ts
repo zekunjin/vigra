@@ -29,21 +29,24 @@ export const useGraph = (props: UseGraphProps) => {
     await canvas.value?.ready
 
     diff(prevVal, currVal).forEach(({ type, newValue: { value } }) => {
-      if (type === 'added') {
-        const node = new Rect({ id: value.id ?? value.key, style: value.style })
-        canvas.value?.appendChild(node)
-
-        if (value.draggable) {
-          interact(node as unknown as HTMLElement, { context: canvas.value?.document as any }).draggable({
-            onmove (event) {
-              const { dx, dy } = event
-              node.translateLocal(dx, dy)
-            }
-          })
-        }
-      }
+      if (type === 'added') { insert(value) }
     })
   }, { immediate: true })
+
+  const insert = (node: NodeProps) => {
+    console.log(node)
+    const _n = new Rect({ id: node.id, style: node.style as any })
+    // canvas.value?.appendChild(_n)
+
+    if (node.draggable) {
+      interact(_n as unknown as HTMLElement, { context: canvas.value?.document as any }).draggable({
+        onmove (event) {
+          const { dx, dy } = event
+          _n.translateLocal(dx, dy)
+        }
+      })
+    }
+  }
 
   return { domRef, canvas }
 }

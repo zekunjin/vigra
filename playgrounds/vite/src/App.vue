@@ -13,8 +13,6 @@ const nodes = ref<{ key: string }[]>([
 const onPush = () => {
   nodes.value.push({ key: nanoid() })
 }
-
-setInterval(() => { onPush() }, 5000)
 </script>
 
 <template>

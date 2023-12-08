@@ -1,0 +1,13 @@
+{
+  "extends": "@nuxtjs/eslint-config-typescript",
+  "rules": {
+    "no-console": "off",
+    "no-use-before-define": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-named-as-default": "off",
+    "vue/multi-word-component-names": "off",
+    "vue/no-setup-props-destructure": "off",
+    "vue/require-explicit-emits": "off",
+    "@typescript-eslint/comma-dangle": ["error", "never"]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "vigra",
+  "version": "0.0.0",
+  "description": "Antv/g based process graph component for vue.",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "dev:vite": "(cd playgrounds/vite && pnpm dev:vite)",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zekunjin/vigra.git"
+  },
+  "keywords": [
+    "graph",
+    "antv",
+    "vue",
+    "process",
+    "flow"
+  ],
+  "author": "zekun.jin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zekunjin/vigra/issues"
+  },
+  "homepage": "https://github.com/zekunjin/vigra#readme",
+  "devDependencies": {
+    "@antv/g": "^5.18.22",
+    "@antv/g-canvas": "^1.11.24",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@vue/tsconfig": "^0.4.0",
+    "@vueuse/core": "^10.7.0",
+    "eslint": "^8.55.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "unplugin-vue-jsx": "^0.2.2",
+    "vitest": "^1.0.2",
+    "vue": "^3.3.10"
+  }
+}

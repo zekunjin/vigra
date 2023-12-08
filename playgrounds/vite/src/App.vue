@@ -3,30 +3,46 @@ import { Graph, Node } from 'vigra'
 import { nanoid } from 'nanoid'
 import { ref } from 'vue'
 
-const nodes = ref([
+const nodes = ref<{ key: string }[]>([
+  { key: nanoid() },
+  { key: nanoid() },
+  { key: nanoid() },
   { key: nanoid() }
 ])
 
-setTimeout(() => {
+const onPush = () => {
   nodes.value.push({ key: nanoid() })
-}, 3000)
+}
+
+setInterval(() => { onPush() }, 5000)
 </script>
 
 <template>
-  {{ nodes }}
-  <Graph :style="{ height: '100vh', width: '100vw' }">
-    <Node
-      v-for="node in nodes"
-      :id="node.key"
-      :key="node.key"
-      :draggable="true"
-      :style="{
-        width: 100,
-        height: 100,
-        fill: '#1890FF',
-        stroke: '#F04864',
-        lineWidth: 4,
-      }"
-    />
-  </Graph>
+  <div>
+    <div :style="{ background: '#fafafa' }">
+      {{ nodes }}
+    </div>
+
+    <div :style="{ background: '#fafafa' }">
+      <button @click="onPush()">
+        add
+      </button>
+    </div>
+
+    <Graph :style="{ height: '512px' }">
+      <Node
+        v-for="node in nodes"
+        :id="node.key"
+        :key="node.key"
+        :draggable="true"
+        :style="{
+          width: 100,
+          height: 100,
+          fill: '#1890FF',
+          stroke: '#F04864',
+          lineWidth: 4,
+        }"
+      />
+    </Graph>
+  </div>
 </template>

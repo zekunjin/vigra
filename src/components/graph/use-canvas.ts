@@ -18,6 +18,7 @@ const onChangeRenderer = (canvas: MaybeRef<Canvas | undefined>) => (renderer: Re
 
 export const useCanvas = (container: Ref, options: UseGraphProps) => {
   const canvas = ref<Canvas>()
+  const isReady = ref(false)
   const { width, height } = useElementBounding(container)
 
   const asyncCanvas = async () => {
@@ -28,6 +29,8 @@ export const useCanvas = (container: Ref, options: UseGraphProps) => {
       height: height.value,
       renderer: options.renderer
     })
+    await canvas.value.ready
+    isReady.value = true
   }
 
   watch(() => [width.value, height.value], ([w, h]) => {
@@ -40,5 +43,5 @@ export const useCanvas = (container: Ref, options: UseGraphProps) => {
 
   asyncCanvas()
 
-  return { canvas }
+  return { canvas, isReady }
 }

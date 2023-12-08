@@ -2,6 +2,7 @@ import { computed, ref, useSlots, watch } from 'vue'
 import type { Renderer } from '@antv/g-canvas'
 import { Group, Rect } from '@antv/g'
 import interact from 'interactjs'
+import { diff } from 'ohash'
 import { pickChildren } from '../../utils/vue'
 import { Node, type NodeProps } from '../node'
 import type { GraphProps } from './graph'
@@ -16,27 +17,31 @@ export const useGraph = (props: UseGraphProps) => {
   const slots = useSlots()
   const { canvas } = useCanvas(domRef, props)
 
-  const nodes = computed<Rect[]>(() => {
+  const nodesProps = computed(() => {
     const [_, n] = pickChildren(slots.default?.(), Node)
-    if (!n) { return [] }
-    return n.map(({ props }) => new Rect({
-      id: props.id,
-      style: props.style
-    }))
+    if (!n) { return {} }
+    const r: Record<string, NodeProps> = {}
+    n.forEach(({ props }) => { r[props.id] = props })
+    return r
   })
 
-  watch(nodes, async (value) => {
+  watch(nodesProps, async (currVal, prevVal) => {
     await canvas.value?.ready
 
-    value.forEach((_node) => {
-      canvas.value?.appendChild(_node)
+    diff(prevVal, currVal).forEach(({ type, newValue: { value } }) => {
+      if (type === 'added') {
+        const node = new Rect({ id: value.id ?? value.key, style: value.style })
+        canvas.value?.appendChild(node)
 
-      interact(_node as unknown as HTMLElement, { context: canvas.value?.document as any }).draggable({
-        onmove (event) {
-          const { dx, dy } = event
-          _node.translateLocal(dx, dy)
+        if (value.draggable) {
+          interact(node as unknown as HTMLElement, { context: canvas.value?.document as any }).draggable({
+            onmove (event) {
+              const { dx, dy } = event
+              node.translateLocal(dx, dy)
+            }
+          })
         }
-      })
+      }
     })
   }, { immediate: true })
 

@@ -44,7 +44,6 @@
   "dependencies": {
     "@antv/g": "^5.18.22",
     "@antv/g-canvas": "^1.11.24",
-    "interactjs": "^1.10.26",
     "ohash": "^1.1.3"
   }
 }

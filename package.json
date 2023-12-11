@@ -27,20 +27,14 @@
   },
   "homepage": "https://github.com/zekunjin/vigra#readme",
   "peerDependencies": {
-    "@antv/g": "^5.18.22",
-    "@antv/g-canvas": "^1.11.24",
     "@vueuse/core": "^10.7.0",
-    "interactjs": "^1.10.26",
     "vue": "^3.3.10"
   },
   "devDependencies": {
-    "@antv/g": "^5.18.22",
-    "@antv/g-canvas": "^1.11.24",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@vue/tsconfig": "^0.4.0",
     "@vueuse/core": "^10.7.0",
     "eslint": "^8.55.0",
-    "interactjs": "^1.10.26",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3",
     "unplugin-vue-jsx": "^0.2.2",
@@ -48,6 +42,9 @@
     "vue": "^3.3.10"
   },
   "dependencies": {
+    "@antv/g": "^5.18.22",
+    "@antv/g-canvas": "^1.11.24",
+    "interactjs": "^1.10.26",
     "ohash": "^1.1.3"
   }
 }

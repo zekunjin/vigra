@@ -4,9 +4,6 @@ import { nanoid } from 'nanoid'
 import { ref } from 'vue'
 
 const nodes = ref<{ key: string }[]>([
-  { key: nanoid() },
-  { key: nanoid() },
-  { key: nanoid() },
   { key: nanoid() }
 ])
 

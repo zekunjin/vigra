@@ -19,8 +19,7 @@ export const bindDraggableEvent = (canvas?: Canvas) => (node: DisplayObject) => 
     const shiftY = event.clientY - node.getBoundingClientRect().top
 
     const moveAt = (canvasX: number, canvasY: number) => {
-      node.style.x = canvasX - shiftX + 'px'
-      node.style.y = canvasY - shiftY + 'px'
+      node.setPosition(canvasX - shiftX, canvasY - shiftY)
     }
 
     moveAt(event.canvasX, event.canvasY)
@@ -31,10 +30,8 @@ export const bindDraggableEvent = (canvas?: Canvas) => (node: DisplayObject) => 
 
     canvas.document.addEventListener('pointermove', onMouseMove)
 
-    node.addEventListener(
-      'pointerup',
-      () => { canvas.document.removeEventListener('pointermove', onMouseMove) },
-      { once: true }
-    )
+    node.addEventListener('pointerup', () => {
+      canvas.document.removeEventListener('pointermove', onMouseMove)
+    }, { once: true })
   })
 }

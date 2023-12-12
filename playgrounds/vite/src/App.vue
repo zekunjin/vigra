@@ -7,6 +7,8 @@ const nodes = ref<{ key: string }[]>([
   { key: nanoid() }
 ])
 
+const onClick = () => { onPush() }
+
 const onPush = () => {
   nodes.value.push({ key: nanoid() })
 }
@@ -19,7 +21,7 @@ const onPush = () => {
     </div>
 
     <div :style="{ background: '#fafafa' }">
-      <button @click="onPush()">
+      <button @click.prevent="onClick()">
         add
       </button>
     </div>
